@@ -371,7 +371,7 @@
             <div class="flex flex-wrap justify-between items-center gap-2">
                 <div>
                     <p class="text-xs text-gray-600 dark:text-neutral-400">
-                        © 2025
+                        © <span id="year"></span>
                     </p>
                 </div>
                 <ul class="flex flex-wrap items-center">
@@ -389,5 +389,9 @@
     </footer>
 
 </body>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 
 </html>
