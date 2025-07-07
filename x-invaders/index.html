@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8" />
+  <title>X-Invaders</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="Build/UnityLoader.js"></script>
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      background-color: #000;
+    }
+
+    .center-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <div class="center-wrapper">
+    <div id="container"></div>
+  </div>
+
+  <script>
+    const container = document.getElementById("container");
+
+    const isMobile = window.innerWidth <= 768;
+
+    if (isMobile) {
+  const w = window.innerWidth;
+  const h = window.innerHeight;
+  container.innerHTML = `<div id="unityContainer" style="width: ${w}px; height: ${h}px; overflow: hidden;"></div>`;
+} else {
+      container.innerHTML = `
+        <div style="position: relative; width: 400px; height: 800px;">
+          <div style="position: absolute; top: 2%; left: 2%; width: 96%; height: 96%; background: black; border-radius: 20px;"></div>
+          <div id="unityContainer" style="position: absolute; top: 8%; left: 4%; width: 92%; height: 84%; background: gray; border-radius: 20px;"></div>
+          <img src="src/img/phone.png" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;">
+        </div>`;
+    }
+
+    UnityLoader.instantiate("unityContainer", "Build/BuildWebGL.json");
+  </script>
+</body>
+</html>
